@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>osuStreamCompanion</title>
+    <link href="./main.css" rel="stylesheet">
+    <script src="/lib/reconnecting-websocket.js"></script>
+    <script src="/lib/consts.js"></script>
+    <script src="/lib/utils.js"></script>
+</head>
+
+<body>
+    <div id="app" v-cloak class="app">
+        <div class="outer left">
+            <table class="stats">
+                <tr v-for="(count, type) in stats" :key="type"
+                    :hidden="type === 'sliderbreak' && count === 0">
+                    <th :class="['stat-type', `stat-type-${type}`]" scope="row">{{ type }}</th>
+                    <td class="stat-count">{{ count }}</td>
+                </tr>
+            </table>
+        </div>
+        <Background class="box">
+            <div class="inner">
+                <div class="title">
+                    <h1 class="title">
+                        <div>{{(unicode ? getToken('mapArtistTitleUnicode') : getToken('mapArtistTitle')) || "\xa0"}}</div>
+                    </h1>
+                </div>
+                <div class="mapinfo">
+                    <p class="mapper info">
+                        mapper <strong>{{getToken('creator')}}</strong>
+                    </p>
+                    <p class="difficulty info">
+                        difficulty <strong>{{getToken('mStars', 2)}}⭐ [{{getToken('diffName')}}]</strong>
+                    </p>
+                    <p class="mods" v-if="getToken('mods')">
+                        mods <strong>{{ getToken('mods') }}</strong>
+                    </p>
+                </div>
+                <div class="progress">
+                    <div class="progress-left">
+                        {{ formatDur((getToken('time') || 0).clamp(0, getToken('totaltime') / 1000)) }}
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" :style="{ width: `${(getToken('time') / (getToken('totaltime') / 1000)).clamp(0, 1) * 100}%` }"> </div>
+                    </div>
+                    <div class="progress-right">
+                        {{ formatDur(getToken('totaltime') / 1000) }}
+                    </div>
+                </div>
+            </div>
+        </Background>
+        <div class="outer right">
+            <table class="right-table">
+                <tr>
+                    <th>bpm</th>
+                    <td>{{ bpm }}</td></tr>
+                </tr>
+                <tr v-show="getToken('gameMode') !== 'OsuMania' || isPlaying || isWatching">
+                    <th>combo</th>
+                    <td v-if="getToken('gameMode') === 'OsuMania'">{{getToken('currentMaxCombo')}}</td>
+                    <td v-else>
+                        <template v-if="isPlaying || isWatching">{{getToken('currentMaxCombo')}} / </template>
+                        {{getToken('maxCombo')}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>pp</th>
+                    <td>
+                        <template v-if="isPlaying || isWatching">{{getToken('ppIfMapEndsNow', 1)}} / </template>
+                        {{getToken(getToken('gameMode') === 'OsuMania' ? 'mania_1_000_000PP' : 'osu_SSPP', 1)}}
+                    </td>
+                </tr>
+                <tr v-if="isPlaying || isWatching">
+                    <th>grade</th>
+                    <td><img v-if="grade" class="grade" :src="`assets/grade-${(grade).toLowerCase()}.svg`"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="./main.js" type="module"></script>
+</body>
+
+</html>
