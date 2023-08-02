@@ -62,23 +62,23 @@
                     自动演示<br>不计分
                 </div>
             </template>
-            <table class="right-table">
+            <table class="right-table" :class="{ live: isPlayingOrWatching }">
                 <tr>
                     <th>bpm</th>
-                    <td>{{ bpm }}</td></tr>
+                    <td><strong>{{ bpm }}</strong></td></tr>
                 </tr>
                 <tr v-show="getToken('gameMode') !== 'OsuMania' || isPlayingOrWatching">
                     <th>combo</th>
-                    <td v-if="getToken('gameMode') === 'OsuMania'">{{getToken('currentMaxCombo')}}</td>
+                    <td v-if="getToken('gameMode') === 'OsuMania'"><strong>{{getToken('currentMaxCombo')}}</strong></td>
                     <td v-else>
-                        <template v-if="isPlayingOrWatching">{{getToken('currentMaxCombo')}} / </template>
+                        <template v-if="isPlayingOrWatching"><strong>{{getToken('currentMaxCombo')}}</strong> / </template>
                         {{getToken('maxCombo')}}
                     </td>
                 </tr>
                 <tr>
                     <th>pp</th>
                     <td>
-                        <template v-if="isPlayingOrWatching">{{getToken('ppIfMapEndsNow', 1)}} / </template>
+                        <template v-if="isPlayingOrWatching"><strong>{{getToken('ppIfMapEndsNow', 1)}}</strong> / </template>
                         {{getToken(getToken('gameMode') === 'OsuMania' ? 'mania_1_000_000PP' : 'osu_SSPP', 1)}}
                     </td>
                 </tr>

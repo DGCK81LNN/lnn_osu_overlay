@@ -104,6 +104,9 @@
 .right-table td {
     font-weight: bold;
     text-align: left;
+}
+.right-table.live td {
+    font-weight: normal;
     width: 8em;
 }
 
