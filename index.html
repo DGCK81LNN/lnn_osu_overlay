@@ -54,6 +54,14 @@
             </div>
         </Background>
         <div class="outer right">
+            <template v-if="showAutomationNotice && isPlayingOrWatching">
+                <div v-if="getToken('mods').match(/\b(RL|AP)\b/)" class="notice">
+                    娱乐模式<br>不计分
+                </div>
+                <div v-else-if="getToken('mods').match(/\b(AU|CN)\b/)" class="notice">
+                    自动演示<br>不计分
+                </div>
+            </template>
             <table class="right-table">
                 <tr>
                     <th>bpm</th>
