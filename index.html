@@ -59,22 +59,22 @@
                     <th>bpm</th>
                     <td>{{ bpm }}</td></tr>
                 </tr>
-                <tr v-show="getToken('gameMode') !== 'OsuMania' || isPlaying || isWatching">
+                <tr v-show="getToken('gameMode') !== 'OsuMania' || isPlayingOrWatching">
                     <th>combo</th>
                     <td v-if="getToken('gameMode') === 'OsuMania'">{{getToken('currentMaxCombo')}}</td>
                     <td v-else>
-                        <template v-if="isPlaying || isWatching">{{getToken('currentMaxCombo')}} / </template>
+                        <template v-if="isPlayingOrWatching">{{getToken('currentMaxCombo')}} / </template>
                         {{getToken('maxCombo')}}
                     </td>
                 </tr>
                 <tr>
                     <th>pp</th>
                     <td>
-                        <template v-if="isPlaying || isWatching">{{getToken('ppIfMapEndsNow', 1)}} / </template>
+                        <template v-if="isPlayingOrWatching">{{getToken('ppIfMapEndsNow', 1)}} / </template>
                         {{getToken(getToken('gameMode') === 'OsuMania' ? 'mania_1_000_000PP' : 'osu_SSPP', 1)}}
                     </td>
                 </tr>
-                <tr v-if="isPlaying || isWatching">
+                <tr v-if="isPlayingOrWatching">
                     <th>grade</th>
                     <td><img v-if="grade" class="grade" :src="`assets/grade-${(grade).toLowerCase()}.svg`"></td>
                 </tr>
