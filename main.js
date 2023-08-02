@@ -49,8 +49,8 @@ await new Promise(async resolve => {
 
 import App from "./components/App.js"
 
-let app = Vue.createApp({
-  ...App,
+let app = Vue.createApp(App, {
+  showAutomationNotice: true,
 })
 
 app.mount("#app")

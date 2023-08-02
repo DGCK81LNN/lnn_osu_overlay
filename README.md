@@ -41,6 +41,9 @@ In addition, when song title and/or artist name contains non-English characters,
 如果有 mods 开启则无论是否在游玩都会显示<br>
 If mods are enabled they will be shown whether you're playing or not
 
+（另外，若启用了 Relax、Autopilot、Auto 或 Cinema 游玩，右侧会显示“娱乐模式，不计分”或“自动演示，不计分”字样。您可在 `main.js` 中修改 `showAutomationNotice` 属性为 `false` 来禁用这一功能。）<br>
+(In addition, when playing with Relax, Autopilot, Auto or Cinema on, a notice will show on the right that says “relax mode, unranked” or “autoplay, unranked” (currently in Chinese always). To turn off this feature, set the `showAutomationNotice` property to `false` in `main.js`.)
+
 ![](images/mods.png)
 
 支持四种游戏模式<br>

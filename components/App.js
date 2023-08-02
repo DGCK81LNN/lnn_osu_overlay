@@ -5,6 +5,9 @@ const app = {
   components: {
     Background: background,
   },
+  props: {
+    showAutomationNotice: false,
+  },
   setup(props, context) {
     const data = Vue.reactive({
       tokens: {},
@@ -113,7 +116,6 @@ const app = {
       grade,
       bpm,
       isResultScreen,
-      showAutomationNotice: true,
     }
   },
 }
