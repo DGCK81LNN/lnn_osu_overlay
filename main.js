@@ -18,9 +18,10 @@ await new Promise(async resolve => {
     if (o) document.cookie = "ipCountryCode=" + o.countryCode
     const isChinaMainland = o ? o.countryCode === "CN" : false
     await loadScript(
+      // currently CDNJS seems to work well enough both in and outside China
       isChinaMainland
-        ? "https://cdn.bootcdn.net/ajax/libs/vue/3.2.14/vue.global.prod.js"
-        : "https://unpkg.com/vue@3.2.14/dist/vue.global.prod.js"
+        ? "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.14/vue.global.prod.js"
+        : "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.14/vue.global.prod.js"
     )
     loadStyle(
       `https://${
