@@ -38,6 +38,11 @@ In addition, when song title and/or artist name contains non-English characters,
 
 ![](images/roman.webp)
 
+**2024-07-07 新增**：现在歌名和曲师名较长时会滚动显示<br>
+**New 2024-07-07**: Now song title and artist name will scroll if too long
+
+https://github.com/DGCK81LNN/lnn_osu_overlay/assets/54282183/2acac0d9-7722-48d7-9672-8ddf2bbc8992
+
 如果有 mods 开启则无论是否在游玩都会显示<br>
 If mods are enabled they will be shown whether you're playing or not
 
@@ -94,8 +99,8 @@ To enter this mode, simply add `#musiconly` to the end of the page URL, for exam
   * CTB 模式下处于结算屏幕时评级总会变成 D<br>
     When in results screen in CTB, grade always becomes D
 
-  * 标题显示不下的时候只会省略号，暂时不会滚动显示<br>
-    When title is too long to fit in one line, it is ellipsized for now, instead of scrolled horizontally to show the full line
+  * ~~标题显示不下的时候只会省略号，暂时不会滚动显示~~ 2024-07-07 已添加滚动功能<br>
+    ~~When title is too long to fit in one line, it is ellipsized for now, instead of scrolled horizontally to show the full line~~ Scroll feature added on 2024-07-07
 
   * mods 开启时，显示的最高 pp 仍然是无 mods 的<br>
     When mods are on, max pp is still max pp without mods
