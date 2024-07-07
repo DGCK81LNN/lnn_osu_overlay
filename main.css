@@ -140,9 +140,8 @@
     position: relative;
 }
 
-.title>* {
-    overflow: clip;
-    text-overflow: ellipsis;
+.marquee {
+    overflow: hidden;
 }
 
 .title-uni {

@@ -1,9 +1,11 @@
-import background from "./Background.js"
+import Background from "./Background.js"
+import Marquee from "./Marquee.js"
 
 const app = {
   name: "App",
   components: {
-    Background: background,
+    Background,
+    Marquee,
   },
   props: {
     showAutomationNotice: false,
