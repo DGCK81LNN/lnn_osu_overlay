@@ -9,6 +9,8 @@ const app = {
   },
   props: {
     showAutomationNotice: false,
+    showUnicodeFirst: false,
+    showSources: false,
   },
   setup(props, context) {
     const data = Vue.reactive({
@@ -104,16 +106,35 @@ const app = {
       return overlay.osuGrade[getToken("grade")]
     })
 
-    const unicode = Vue.ref(false)
-    setInterval(() => {
-      unicode.value = !unicode.value
-    }, 8000)
+    const unicode = Vue.ref(props.showUnicodeFirst)
+    let unicodeSwitchInterval
+    const artistTitle = Vue.computed(() => {
+      let artist = unicode.value ? getToken("artistUnicode") : getToken("artistRoman")
+      if (props.showSources) {
+        const source = getToken("source")
+        artist = source ? `${source} (${artist})` : artist
+      }
+      return `${artist} - ${unicode.value ? getToken("titleUnicode") : getToken("titleRoman")}`
+    })
+    Vue.watch(() => ({
+      source: props.showSources ? getToken("source") : "",
+      titleRoman: getToken("titleRoman"),
+      titleUnicode: getToken("titleUnicode"),
+      artistRoman: getToken("artistRoman"),
+      artistUnicode: getToken("artistUnicode"),
+    }), () => {
+      unicode.value = props.showUnicodeFirst
+      clearInterval(unicodeSwitchInterval)
+      unicodeSwitchInterval = setInterval(() => {
+        unicode.value = !unicode.value
+      }, 8000)
+    })
 
     return {
       getToken,
       isPlayingOrWatching,
       formatDur,
-      unicode,
+      artistTitle,
       stats,
       grade,
       bpm,

@@ -38,10 +38,20 @@ In addition, when song title and/or artist name contains non-English characters,
 
 ![](images/roman.webp)
 
+**2024-07-08 新增**：切换曲目时，现在默认会先显示原文，若要先显示转写，请将 `main.js` 中的 `showUnicodeFirst` 属性设为 `false`<br>
+**New 2024-07-08**: After switching songs, now the original text is shown first by default; you can change this by changing the `showUnicodeFirst` property to `false` in `main.js`
+
 **2024-07-07 新增**：现在歌名和曲师名较长时会滚动显示<br>
 **New 2024-07-07**: Now song title and artist name will scroll if too long
 
 https://github.com/DGCK81LNN/lnn_osu_overlay/assets/54282183/2acac0d9-7722-48d7-9672-8ddf2bbc8992
+
+**2024-07-08 新增**: 可通过修改 `main.js` 中的 `showSources` 属性为 `true` 来在标题行显示歌曲的 `Source` 字段<br>
+**New 2024-07-08**: You can now show the `Source` field of the song alongside the artist name by setting the `showSources` property to `true` in `main.js`
+
+    cYsmix - Classic Pursuit
+              ⇓
+    osu! (cYsmix) - Classic Pursuit
 
 如果有 mods 开启则无论是否在游玩都会显示<br>
 If mods are enabled they will be shown whether you're playing or not
