@@ -34,7 +34,7 @@
                         mapper <strong>{{getToken('creator')}}</strong>
                     </p>
                     <p class="difficulty info">
-                        difficulty <strong>{{getToken('mStars', 2)}}⭐ [{{getToken('diffName')}}]</strong>
+                        difficulty <strong>{{getToken('mStars', 2)}}⭐ [{{getToken('diffName') + (getToken('gameMode') === 'OsuMania' ? " (" + getToken('cs') + "K)" : "")}}]</strong>
                     </p>
                     <p class="mods" v-if="getToken('mods')">
                         mods <strong>{{ getToken('mods') }}</strong>
